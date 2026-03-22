@@ -7,6 +7,7 @@ const generateShortCode = require('./utils/lib');
 dotenv.config();
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
@@ -91,6 +92,6 @@ app.get('/:shortCode', async (req, res) => {
   return res.redirect(302, data.original);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Server running on port 3000');
 });
